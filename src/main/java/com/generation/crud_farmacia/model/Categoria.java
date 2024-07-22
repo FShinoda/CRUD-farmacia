@@ -1,9 +1,12 @@
 package com.generation.crud_farmacia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -22,6 +25,20 @@ public class Categoria {
 	
 	@Size(max=255, message="A descrição pode ter apenas no máximo 255 caracteres.")
 	private String descricao;
+	
+	@OneToMany
+	@JsonIgnoreProperties("categoria")
+	private Produto produto;
+	
+	
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
 	public Long getId() {
 		return id;
