@@ -1,5 +1,7 @@
 package com.generation.crud_farmacia.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -28,15 +30,13 @@ public class Categoria {
 	
 	@OneToMany
 	@JsonIgnoreProperties("categoria")
-	private Produto produto;
-	
-	
+	private List<Produto> produto;
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
 
